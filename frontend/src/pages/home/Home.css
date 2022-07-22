@@ -1,4 +1,4 @@
-.angry-grid {
+.home-page-angry-grid {
   display: grid;
 
   grid-template-rows: 1fr 1fr 1fr 1fr;
@@ -8,14 +8,14 @@
   height: 100%;
 }
 
-#item-0 {
+#home-page-item-0 {
   grid-row-start: 1;
   grid-column-start: 1;
 
   grid-row-end: 2;
   grid-column-end: 5;
 }
-#item-1 {
+#home-page-item-1 {
   grid-row-start: 2;
   grid-column-start: 2;
 
@@ -26,21 +26,21 @@
   border-color: black;
   height: 50vh;
 }
-#item-2 {
+#home-page-item-2 {
   grid-row-start: 4;
   grid-column-start: 1;
 
   grid-row-end: 5;
   grid-column-end: 5;
 }
-#item-3 {
+#home-page-item-3 {
   grid-row-start: 2;
   grid-column-start: 4;
 
   grid-row-end: 4;
   grid-column-end: 5;
 }
-#item-4 {
+#home-page-item-4 {
   grid-row-start: 2;
   grid-column-start: 1;
 
