@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 
 const authRoutes = require("./routes/auth-routes");
 const userRoutes = require("./routes/user-routes");
+const noteRoutes = require("./routes/note-routes");
 
 const app = express();
 
@@ -28,6 +29,7 @@ mongoose
 // API endpoints
 app.use("/api/auth", authRoutes);
 app.use("/api/user", userRoutes);
+app.use("/api/note", noteRoutes);
 
 // used to bind and listen the connections on the specified host and port
 app.listen(PORT, () => {

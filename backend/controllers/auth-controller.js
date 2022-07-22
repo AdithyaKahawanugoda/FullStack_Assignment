@@ -27,7 +27,7 @@ exports.register = async (req, res) => {
           msg: "Invalid email address, please check again",
         });
       }
-      const user = await UserModel.create({
+      await UserModel.create({
         id: userId,
         email,
         password,
