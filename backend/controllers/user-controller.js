@@ -2,7 +2,7 @@ const UserModel = require("../models/user-model");
 const NoteModel = require("../models/notes-model");
 const bcrypt = require("bcryptjs");
 
-// user profile update controller function
+// user profile update
 exports.updateProfile = async (req, res) => {
   const profileData = req.body;
   const email = req.user.email;
@@ -128,6 +128,21 @@ exports.getNotes = async (req, res) => {
   } catch (error) {
     return res.status(500).json({
       msg: "Error in getNotes controller-" + error,
+    });
+  }
+};
+
+// get notes by student id
+exports.getNotesByStudentId = async (req, res) => {
+  const student_id = req.params.sid;
+  try {
+    const notes = await UserModel.find({ student_id });
+    return res.status(200).json({
+      notes,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      msg: "Error in getNotesByStudentId controller-" + error,
     });
   }
 };
