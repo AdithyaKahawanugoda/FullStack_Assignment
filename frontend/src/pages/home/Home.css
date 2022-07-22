@@ -47,3 +47,35 @@
   grid-row-end: 4;
   grid-column-end: 2;
 }
+
+.home-container-angry-grid {
+  display: grid;
+
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+
+  gap: 0px;
+  height: 100%;
+}
+
+#home-container-item-0 {
+  grid-row-start: 1;
+  grid-column-start: 1;
+
+  grid-row-end: 2;
+  grid-column-end: 3;
+}
+#home-container-item-1 {
+  grid-row-start: 2;
+  grid-column-start: 1;
+
+  grid-row-end: 5;
+  grid-column-end: 5;
+}
+#home-container-item-2 {
+  grid-row-start: 1;
+  grid-column-start: 3;
+
+  grid-row-end: 2;
+  grid-column-end: 5;
+}
