@@ -3,52 +3,64 @@ const UserModel = require("../models/user-model");
 
 exports.protectedUser = async (req, res, next) => {
   const decoded = tokenValidate(req, res);
-  try {
-    const user = await UserModel.findById(decoded.objId);
-    if (!user) {
-      noUserResponse(res);
-    } else if (user.accountType !== "USER") {
-      accessDeniedResponse(res);
-    } else {
-      req.user = user;
-      next();
+  if (decoded && decoded.hasOwnProperty("objId")) {
+    try {
+      const user = await UserModel.findById(decoded.objId);
+      if (!user) {
+        noUserResponse(res);
+      } else if ((user.accountType !== "USER") | "ADMIN" | "STUDENT") {
+        accessDeniedResponse(res);
+      } else {
+        req.user = user;
+        next();
+      }
+    } catch (err) {
+      return res
+        .status(401)
+        .json({ msg: "Something went wrong, access denied" });
     }
-  } catch (err) {
-    return res.status(401).json({ msg: "Something went wrong, access denied" });
   }
 };
 
 exports.protectedAdmin = async (req, res, next) => {
   const decoded = tokenValidate(req, res);
-  try {
-    const user = await UserModel.findById(decoded.objId);
-    if (!user) {
-      noUserResponse(res);
-    } else if (user.accountType !== "ADMIN") {
-      accessDeniedResponse(res);
-    } else {
-      req.user = user;
-      next();
+  if (decoded && decoded.hasOwnProperty("objId")) {
+    try {
+      const user = await UserModel.findById(decoded.objId);
+      if (!user) {
+        noUserResponse(res);
+      } else if (user.accountType !== "ADMIN") {
+        accessDeniedResponse(res);
+      } else {
+        req.user = user;
+        next();
+      }
+    } catch (err) {
+      return res
+        .status(401)
+        .json({ msg: "Something went wrong, access denied" });
     }
-  } catch (err) {
-    return res.status(401).json({ msg: "Something went wrong, access denied" });
   }
 };
 
 exports.protectedStudent = async (req, res, next) => {
   const decoded = tokenValidate(req, res);
-  try {
-    const user = await UserModel.findById(decoded.objId);
-    if (!user) {
-      noUserResponse(res);
-    } else if (user.accountType !== "STUDENT") {
-      accessDeniedResponse(res);
-    } else {
-      req.user = user;
-      next();
+  if (decoded && decoded.hasOwnProperty("objId")) {
+    try {
+      const user = await UserModel.findById(decoded.objId);
+      if (!user) {
+        noUserResponse(res);
+      } else if (user.accountType !== "STUDENT") {
+        accessDeniedResponse(res);
+      } else {
+        req.user = user;
+        next();
+      }
+    } catch (err) {
+      return res
+        .status(401)
+        .json({ msg: "Something went wrong, access denied" });
     }
-  } catch (err) {
-    return res.status(401).json({ msg: "Something went wrong, access denied" });
   }
 };
 
@@ -62,27 +74,27 @@ const tokenValidate = (reqObj, res) => {
   ) {
     token = reqObj.headers.authorization.split(" ")[1];
   }
-  if (!token) {
-    return res.status(401).json({ msg: "Not Authorized to Access" });
-  } else {
-    try {
+
+  try {
+    if (!token) {
+      return res.status(401).json({ msg: "Not Authorized to Access" });
+    } else {
       decoded = jwt.verify(token, process.env.JWT_SECRET);
-    } catch (err) {
-      if (err.name === "TokenExpiredError") {
-        return res
-          .status(401)
-          .json({ msg: "Your session has been expired, please login again" });
-      } else if (err.name === "JsonWebTokenError") {
-        return res.status(401).json({ msg: err.message });
-      } else {
-        return res
-          .status(401)
-          .json({ msg: "Something went wrong, access denied" });
-      }
+      return decoded;
+    }
+  } catch (err) {
+    if (err.name === "TokenExpiredError") {
+      return res
+        .status(401)
+        .json({ msg: "Your session has been expired, please login again" });
+    } else if (err.name === "JsonWebTokenError") {
+      return res.status(401).json({ msg: err.message });
+    } else {
+      return res
+        .status(401)
+        .json({ msg: "Something went wrong, access denied" });
     }
   }
-
-  return decoded;
 };
 
 const noUserResponse = (res) => {
