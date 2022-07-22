@@ -5,7 +5,7 @@ import { ContainerCard } from "../../components/index";
 const Admin = () => {
   return (
     <>
-      <div class="admin-page-angry-grid">
+      <div className="admin-page-angry-grid">
         <div id="admin-page-item-0">&nbsp;0</div>
         <div id="admin-page-item-1">
           <ContainerCard>User List section</ContainerCard>

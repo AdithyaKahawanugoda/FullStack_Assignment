@@ -1,0 +1,70 @@
+.student-page-angry-grid {
+  display: grid;
+
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+
+  gap: 0px;
+  height: 100%;
+}
+
+#student-page-item-0 {
+  grid-row-start: 2;
+  grid-column-start: 3;
+
+  grid-row-end: 3;
+  grid-column-end: 4;
+}
+#student-page-item-1 {
+  grid-row-start: 3;
+  grid-column-start: 2;
+
+  grid-row-end: 5;
+  grid-column-end: 5;
+
+  border: solid;
+  border-color: black;
+  height: 40vh;
+}
+#student-page-item-2 {
+  grid-row-start: 1;
+  grid-column-start: 1;
+
+  grid-row-end: 2;
+  grid-column-end: 6;
+}
+#student-page-item-3 {
+  grid-row-start: 5;
+  grid-column-start: 1;
+
+  grid-row-end: 6;
+  grid-column-end: 6;
+}
+#student-page-item-4 {
+  grid-row-start: 2;
+  grid-column-start: 5;
+
+  grid-row-end: 5;
+  grid-column-end: 6;
+}
+#student-page-item-5 {
+  grid-row-start: 2;
+  grid-column-start: 1;
+
+  grid-row-end: 5;
+  grid-column-end: 2;
+}
+#student-page-item-6 {
+  grid-row-start: 2;
+  grid-column-start: 2;
+
+  grid-row-end: 3;
+  grid-column-end: 3;
+}
+#student-page-item-7 {
+  grid-row-start: 2;
+  grid-column-start: 4;
+
+  grid-row-end: 3;
+  grid-column-end: 5;
+}
