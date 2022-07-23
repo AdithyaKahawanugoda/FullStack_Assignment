@@ -5,27 +5,28 @@ const bcrypt = require("bcryptjs");
 exports.updateProfile = async (req, res) => {
   const profileData = req.body;
   const email = req.user.email;
+
   try {
     // first time login check
     if (!req.user.status) {
-      if (!profileData.newPassword) {
+      if (!profileData.password) {
         return res.status(400).json({
           msg: "Please provide a new password to proceed",
         });
       } else {
-        await resetPassword(email, profileData.newPassword);
+        await UserModel.findOneAndUpdate(
+          { email },
+          {
+            $set: profileData,
+          }
+        );
+        await resetPassword(email, profileData.password);
         await updateStatus(email, true);
+        return res.status(200).json({
+          msg: "Profile updated successfully",
+        });
       }
     }
-    await UserModel.findOneAndUpdate(
-      { email },
-      {
-        $set: profileData,
-      }
-    );
-    return res.status(200).json({
-      msg: "Profile updated successfully",
-    });
   } catch (error) {
     return res.status(500).json({
       msg: "Error in updateProfile controller-" + error,
@@ -54,6 +55,20 @@ exports.getUserById = async (req, res) => {
     const user = await UserModel.findOne({ id });
     return res.status(200).json({
       user,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      msg: "Error in getUserById controller-" + error,
+    });
+  }
+};
+
+// get user email
+exports.getUserEmail = async (req, res) => {
+  try {
+    const userEmail = req.user.email;
+    return res.status(200).json({
+      userEmail,
     });
   } catch (error) {
     return res.status(500).json({

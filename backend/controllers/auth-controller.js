@@ -60,7 +60,12 @@ exports.login = async (req, res, next) => {
         });
       } else {
         const token = user.getSignedToken();
-        return res.status(200).json({ token, user });
+        const userEmail = user.email;
+        const userStatus = user.status;
+        const userAccountType = user.accountType;
+        return res
+          .status(200)
+          .json({ token, userEmail, userStatus, userAccountType });
       }
     }
   } catch (error) {

@@ -20,12 +20,19 @@ const Login = ({ sectionNavigator }) => {
     localStorage.removeItem("authToken");
     localStorage.removeItem("accountType");
     const loginSuccessHandler = () => {
-      if (loginData.token && loginData.user) {
+      if (loginData?.token && loginData?.userAccountType) {
         localStorage.setItem("authToken", loginData.token);
-        localStorage.setItem("accountType", loginData.user.accountType);
-        setIsLoading(false);
-        sectionNavigator(2);
+        localStorage.setItem("accountType", loginData.userAccountType);
       }
+
+      if (loginData?.userStatus === false) {
+        sectionNavigator(2);
+      } else if (loginData?.userStatus === true) {
+        sectionNavigator(3);
+      }
+
+      setIsLoading(false);
+      setIsSubmit(false);
     };
     if (loginData) {
       loginSuccessHandler();

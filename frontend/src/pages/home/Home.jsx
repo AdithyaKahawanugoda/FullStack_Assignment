@@ -11,8 +11,8 @@ import Button from "@mui/material/Button";
 import ArrowBackIosRoundedIcon from "@mui/icons-material/ArrowBackIosRounded";
 
 const Home = () => {
-  const [currentSection, setCurrentSection] = useState(2); //set to 1
-  const [currentTab, setCurrentTab] = useState(2); //set to 1
+  const [currentSection, setCurrentSection] = useState(1); //set to 1
+  const [currentTab, setCurrentTab] = useState(1); //set to 1
 
   // tab 1 - signup
   // tab 2 - login

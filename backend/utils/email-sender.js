@@ -10,8 +10,8 @@ const SendEmail = async (email, password, url) => {
     port: 587,
     secure: false, // true for 465, false for other ports
     auth: {
-      user: "lurline.treutel@ethereal.email",
-      pass: "J33fak5rZ6V2BGEU57",
+      user: "sandra78@ethereal.email",
+      pass: "J8vWQMtvjNT36D3AkM",
     },
   });
 
