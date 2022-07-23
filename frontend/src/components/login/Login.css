@@ -1,0 +1,23 @@
+.login-component-email-container {
+  width: 60%;
+  margin-bottom: 10px;
+}
+.login-component-password-container {
+  width: 60%;
+  margin-bottom: 20px;
+}
+.login-component-login-btn {
+  width: fit-content;
+}
+.login-component-login-btn-text {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 1em;
+}
+.login-component-error-text {
+  padding: 10px;
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 1em;
+  color: red;
+}

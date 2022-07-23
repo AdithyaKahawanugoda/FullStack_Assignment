@@ -10,8 +10,8 @@ const SendEmail = async (email, password, url) => {
     port: 587,
     secure: false, // true for 465, false for other ports
     auth: {
-      user: "kathryne5@ethereal.email",
-      pass: "U14knsRj82PKvwW48m",
+      user: "lurline.treutel@ethereal.email",
+      pass: "J33fak5rZ6V2BGEU57",
     },
   });
 
@@ -26,7 +26,7 @@ const SendEmail = async (email, password, url) => {
             <p>Please use below credentials to complete the registration process.</p>
             <h5> Email : ${email} </h5>
             <h5> Temporary Password : ${password} </h5>
-            <h5> Login URL : ${url} </h5>`,
+            <h5> Login URL : <a href=${url}>Click here to login!</a></h5>`,
   };
 
   // send mail with defined transport object

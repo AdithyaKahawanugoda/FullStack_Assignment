@@ -32,7 +32,7 @@ exports.register = async (req, res) => {
         email,
         password,
       });
-      await SendEmail(email, password, "test/url.com");
+      await SendEmail(email, password, "http://localhost:3000/");
       return res.status(201).json({ msg: "Registration is half-way done!" });
     } catch (error) {
       return res.status(500).json({
