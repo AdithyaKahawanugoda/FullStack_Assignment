@@ -22,8 +22,6 @@
   grid-row-end: 4;
   grid-column-end: 4;
 
-  border: solid;
-  border-color: black;
   height: 50vh;
 }
 #home-page-item-2 {
@@ -71,6 +69,8 @@
 
   grid-row-end: 5;
   grid-column-end: 5;
+
+  padding: 25px;
 }
 #home-container-item-2 {
   grid-row-start: 1;
@@ -78,4 +78,22 @@
 
   grid-row-end: 2;
   grid-column-end: 5;
+}
+
+.home-container-tab {
+  padding-left: 25px;
+  padding-top: 15px;
+  padding-bottom: 10px;
+  border-radius: 15px;
+}
+.home-container-tab:hover {
+  background-color: rgb(240, 240, 240);
+}
+.home-container-tab-selected {
+  background-color: rgb(218, 218, 218);
+}
+.home-container-tab-heading {
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 2em;
 }

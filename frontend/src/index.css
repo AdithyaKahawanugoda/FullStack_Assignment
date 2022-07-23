@@ -1,7 +1,8 @@
-@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,400;0,500;0,600;0,700;0,800;1,300;1,700&display=swap");
+/* added regular font weights - 200,400,500,600,700,800 */
+/* added italic font weights - 300,700 */
 :root {
-  --font-family: "Manrope", sans-serif;
+  --font-family: "Poppins", sans-serif;
 
   /* ff 3.6+ */
   background: -moz-radial-gradient(
