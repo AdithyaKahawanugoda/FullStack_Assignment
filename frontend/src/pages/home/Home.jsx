@@ -7,10 +7,12 @@ import {
   AccountTypeSelection,
 } from "../../components/index";
 import "./Home.css";
+import Button from "@mui/material/Button";
+import ArrowBackIosRoundedIcon from "@mui/icons-material/ArrowBackIosRounded";
 
 const Home = () => {
-  const [currentSection, setCurrentSection] = useState(1);
-  const [currentTab, setCurrentTab] = useState(1);
+  const [currentSection, setCurrentSection] = useState(2); //set to 1
+  const [currentTab, setCurrentTab] = useState(2); //set to 1
 
   // tab 1 - signup
   // tab 2 - login
@@ -83,21 +85,31 @@ const Home = () => {
           )}
           {currentSection === 2 && (
             <ContainerCard>
-              <button
+              <div
+                className="home-container-back-btn"
                 onClick={() => {
                   currentSectionHandler(1);
                 }}
               >
-                Back to signup/login
-              </button>
-              <ProfileUpdate />
-              <button
+                <Button
+                  variant="contained"
+                  size="medium"
+                  endIcon={<ArrowBackIosRoundedIcon />}
+                >
+                  <div className="home-container-back-btn-text">Back</div>
+                </Button>
+              </div>
+              <p className="home-container-update-profile-text">
+                Please fill following fields to complete your registration
+              </p>
+              <ProfileUpdate sectionNavigator={currentSectionHandler} />
+              {/* <button
                 onClick={() => {
                   currentSectionHandler(3);
                 }}
               >
                 Next section
-              </button>
+              </button> */}
             </ContainerCard>
           )}
           {currentSection === 3 && (

@@ -97,3 +97,22 @@
   font-weight: 600;
   font-size: 2em;
 }
+.home-container-back-btn {
+  padding-left: 25px;
+  padding-top: 15px;
+  padding-bottom: 10px;
+  width: fit-content;
+}
+.home-container-back-btn-text {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 1em;
+}
+.home-container-update-profile-text {
+  margin-left: 20px;
+  margin-bottom: 10px;
+  color: teal;
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 1em;
+}
