@@ -11,7 +11,7 @@ import Button from "@mui/material/Button";
 import ArrowBackIosRoundedIcon from "@mui/icons-material/ArrowBackIosRounded";
 
 const Home = () => {
-  const [currentSection, setCurrentSection] = useState(1); //set to 1
+  const [currentSection, setCurrentSection] = useState(3); //set to 1
   const [currentTab, setCurrentTab] = useState(1); //set to 1
 
   // tab 1 - signup
@@ -103,24 +103,10 @@ const Home = () => {
                 Please fill following fields to complete your registration
               </p>
               <ProfileUpdate sectionNavigator={currentSectionHandler} />
-              {/* <button
-                onClick={() => {
-                  currentSectionHandler(3);
-                }}
-              >
-                Next section
-              </button> */}
             </ContainerCard>
           )}
           {currentSection === 3 && (
             <ContainerCard>
-              <button
-                onClick={() => {
-                  currentSectionHandler(2);
-                }}
-              >
-                Back to profile update
-              </button>
               <AccountTypeSelection />
             </ContainerCard>
           )}

@@ -1,0 +1,85 @@
+.account-selection-container-angry-grid {
+  display: grid;
+
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+
+  gap: 0px;
+  height: 100%;
+
+  padding-left: 1vw;
+}
+
+#account-selection-container-item-0 {
+  grid-row-start: 1;
+  grid-column-start: 1;
+
+  grid-row-end: 2;
+  grid-column-end: 3;
+}
+#account-selection-container-item-1 {
+  grid-row-start: 2;
+  grid-column-start: 1;
+
+  grid-row-end: 3;
+  grid-column-end: 2;
+
+  display: flex;
+  justify-content: center;
+}
+#account-selection-container-item-2 {
+  grid-row-start: 2;
+  grid-column-start: 2;
+
+  grid-row-end: 3;
+  grid-column-end: 3;
+}
+#account-selection-container-item-3 {
+  grid-row-start: 3;
+  grid-column-start: 1;
+
+  grid-row-end: 4;
+  grid-column-end: 3;
+}
+
+.account-selection-container-header-text {
+  margin-left: 20px;
+  margin-bottom: 20px;
+  margin-top: 30px;
+  color: teal;
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 1.3em;
+}
+
+.account-selection-container-admin-box {
+  height: fit-content;
+  width: 60%;
+  text-align: center;
+  color: white;
+  background: teal;
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 2em;
+  padding: 10px;
+}
+.account-selection-container-student-box {
+  height: fit-content;
+  width: 60%;
+  text-align: center;
+  color: white;
+  background: teal;
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 2em;
+  padding: 10px;
+}
+
+.account-selection-container-admin-box:hover {
+  border: solid white;
+  opacity: 0.8;
+}
+.account-selection-container-student-box:hover {
+  border: solid white;
+  opacity: 0.8;
+}
