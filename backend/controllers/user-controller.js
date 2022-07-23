@@ -77,6 +77,34 @@ exports.getUserEmail = async (req, res) => {
   }
 };
 
+exports.updateUserAccountType = async (req, res) => {
+  const { accountType } = req.body;
+  const email = req.user.email;
+  try {
+    if (accountType === "ADMIN" || accountType === "STUDENT") {
+      await UserModel.findOneAndUpdate(
+        { email },
+        {
+          $set: {
+            accountType: accountType,
+          },
+        }
+      );
+      return res.status(200).json({
+        msg: "Profile updated successfully",
+        accountType,
+      });
+    } else
+      return res.status(400).json({
+        msg: "Invalid account type ",
+      });
+  } catch (error) {
+    return res.status(500).json({
+      msg: "Error in updateUserAccountType controller-" + error,
+    });
+  }
+};
+
 const resetPassword = async (email, newPassword) => {
   try {
     // hash password before saving into db
