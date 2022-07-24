@@ -4,6 +4,7 @@ export { default as Notes } from "./notes/Notes";
 export { default as AddNewNote } from "./notes/AddNewNote";
 export { default as ProfileUpdate } from "./profileUpdate/ProfileUpdate";
 export { default as Search } from "./search/Search";
+export { default as ResultsModal } from "./search/ResultsModal";
 export { default as SignUp } from "./signup/SignUp";
 export { default as Users } from "./users/Users";
 export { default as ContainerCard } from "./common/ContainerCard";

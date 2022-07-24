@@ -1,23 +1,41 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./Search.css";
-import OutlinedInput from "@mui/material/OutlinedInput";
-import InputLabel from "@mui/material/InputLabel";
 import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
 import ManageSearchRoundedIcon from "@mui/icons-material/ManageSearchRounded";
 import { teal, red } from "@mui/material/colors";
-import validator from "validator";
 import BarLoader from "react-spinners/BarLoader";
+import { ResultsModal } from "../index";
 import axios from "axios";
 
 const Search = () => {
   const [search, setSearch] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [user, setUser] = useState(null);
+  const [results, setResults] = useState(null);
   const [isHover, setIsHover] = useState(false);
 
   const searchHandler = async () => {
-    await axios.get();
+    setIsLoading(true);
+    const config = {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+      },
+    };
+    await axios
+      .get(`http://localhost:5000/api/user/search?term=${search}`, config)
+      .then((res) => {
+        console.log(res);
+        setResults(res.data.user);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        console.log(err);
+        setIsLoading(false);
+      });
+  };
+
+  const resultsHandler = () => {
+    setResults(null);
   };
 
   const hoverInHandler = () => {
@@ -61,6 +79,9 @@ const Search = () => {
         value={search}
       />
       {isLoading && <BarLoader width={"100%"} />}
+      {!isLoading && results && (
+        <ResultsModal users={results} resultsHandler={resultsHandler} />
+      )}
     </>
   );
 };
