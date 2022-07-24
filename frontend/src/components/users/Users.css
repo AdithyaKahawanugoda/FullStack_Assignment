@@ -1,7 +1,10 @@
 .user-list-container {
   padding: 20px;
 }
-
+.user-list-item-search {
+  margin-bottom: 30px;
+  width: 50%;
+}
 .user-list-container-heading {
   color: teal;
   font-family: var(--font-family);
@@ -10,7 +13,7 @@
 }
 
 .user-list-item-container {
-  padding-top: 50px;
+  padding-top: 20px;
   padding-left: 10px;
 }
 

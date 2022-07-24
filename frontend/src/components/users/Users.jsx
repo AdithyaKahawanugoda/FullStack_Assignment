@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./Users.css";
-import { Pagination } from "../index";
+import { Pagination, Search } from "../index";
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
@@ -57,6 +57,9 @@ const Users = () => {
     <div className="user-list-container">
       <div className="user-list-container-heading">User list</div>
       <div className="user-list-item-container">
+        <div className="user-list-item-search">
+          <Search />
+        </div>
         <div className="user-list-item-headings">
           <div>User ID</div>
           <div>Full Name</div>
@@ -85,7 +88,6 @@ const Users = () => {
               );
             })}
         </div>
-
         <div className="user-list-pagination">
           <Pagination page={page} pages={pages} changePage={setPage} />
         </div>
