@@ -101,6 +101,7 @@ exports.getUserEmail = async (req, res) => {
 exports.updateUserAccountType = async (req, res) => {
   const { accountType } = req.body;
   const email = req.user.email;
+
   try {
     if (accountType === "ADMIN" || accountType === "STUDENT") {
       await UserModel.findOneAndUpdate(

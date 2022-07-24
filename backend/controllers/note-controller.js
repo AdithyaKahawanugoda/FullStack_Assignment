@@ -3,10 +3,12 @@ const NoteModel = require("../models/notes-model");
 // add note
 exports.addNote = async (req, res) => {
   const { title, description } = req.body;
+  const user_id = req.user._id;
   try {
     await NoteModel.create({
       title,
       description,
+      student_id: user_id,
     });
     return res.status(201).json({ msg: "New note added" });
   } catch (error) {
@@ -57,29 +59,38 @@ exports.updateNoteById = async (req, res) => {
 
 // get all notes
 exports.getNotes = async (req, res) => {
+  const student_id = req.user._id;
+  console.log(req.user.email);
+  console.log(student_id);
   try {
-    const allNotes = await NoteModel.find();
-    return res.status(200).send({
-      allNotes,
-    });
-  } catch (error) {
-    return res.status(500).json({
-      msg: "Error in getNotes controller-" + error,
-    });
-  }
-};
+    let query = NoteModel.find({ student_id });
 
-// get notes by student id
-exports.getNotesByStudentId = async (req, res) => {
-  const student_id = req.params.sid;
-  try {
-    const notes = await NoteModel.find({ student_id });
-    return res.status(200).json({
+    const page = parseInt(req.query.page) || 1;
+    const pageSize = parseInt(req.query.limit) || 4;
+    const skip = (page - 1) * pageSize;
+    const total = await NoteModel.countDocuments({ student_id });
+
+    const pages = Math.ceil(total / pageSize);
+
+    query = query.skip(skip).limit(pageSize);
+
+    if (page > pages) {
+      return res.status(404).json({
+        msg: "No page found",
+      });
+    }
+
+    const notes = await query;
+
+    res.status(200).json({
+      count: notes.length,
+      page,
+      pages,
       notes,
     });
   } catch (error) {
     return res.status(500).json({
-      msg: "Error in getNotesByStudentId controller-" + error,
+      msg: "Error in getNotes controller-" + error,
     });
   }
 };
