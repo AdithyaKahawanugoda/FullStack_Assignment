@@ -6,3 +6,4 @@ export { default as Search } from "./search/Search";
 export { default as SignUp } from "./signup/SignUp";
 export { default as Users } from "./users/Users";
 export { default as ContainerCard } from "./common/ContainerCard";
+export { default as Pagination } from "./common/Pagination";

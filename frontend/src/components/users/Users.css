@@ -1,0 +1,48 @@
+.user-list-container {
+  padding: 20px;
+}
+
+.user-list-container-heading {
+  color: teal;
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 2em;
+}
+
+.user-list-item-container {
+  padding-top: 50px;
+  padding-left: 10px;
+}
+
+.user-list-item-headings {
+  border-bottom: solid black;
+  padding-left: 10px;
+  padding-right: 10px;
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  margin-bottom: 20px;
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 1.3em;
+}
+.user-list-item-container-boundary {
+  height: 15vh;
+}
+.user-list-item-boundary {
+  border-bottom: solid rgba(0, 0, 0, 0.247);
+  padding-left: 15px;
+  padding-right: 15px;
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  margin-bottom: 10px;
+  font-family: var(--font-family);
+  font-weight: 300;
+  font-size: 1em;
+}
+
+.user-list-pagination {
+  margin-top: 30px;
+  width: 80%;
+}

@@ -1,21 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Admin.css";
-import { ContainerCard } from "../../components/index";
+import { ContainerCard, Users } from "../../components/index";
 
 const Admin = () => {
+  const [pageNo, setPageNo] = useState(1);
+
+  useEffect(() => {}, []);
+
   return (
     <>
       <div className="admin-page-angry-grid">
-        <div id="admin-page-item-0">&nbsp;0</div>
+        <div id="admin-page-item-0">
+          <div>
+            <div>ADMIN VIEW</div>
+            <div>LOG OUT</div>
+          </div>
+        </div>
         <div id="admin-page-item-1">
-          <ContainerCard>User List section</ContainerCard>
+          <ContainerCard>
+            <Users />
+          </ContainerCard>
         </div>
-        <div id="admin-page-item-2">&nbsp;2</div>
-        <div id="admin-page-item-3">&nbsp;3</div>
-        <div id="admin-page-item-4">
-          <ContainerCard>Pagination section</ContainerCard>
-        </div>
-        <div id="admin-page-item-5">&nbsp;5</div>
+        <div id="admin-page-item-2"></div>
+        <div id="admin-page-item-3"></div>
+        <div id="admin-page-item-4"></div>
       </div>
     </>
   );
