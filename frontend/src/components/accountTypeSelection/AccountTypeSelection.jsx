@@ -19,7 +19,7 @@ const AccountTypeSelection = () => {
         config
       )
       .then((res) => {
-        console.log(res);
+        localStorage.setItem("accountType", res.data.accountType);
         if (res.data.accountType === "ADMIN") {
           navigate("/admin");
         } else if (res.data.accountType === "STUDENT") {
