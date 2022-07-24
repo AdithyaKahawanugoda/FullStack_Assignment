@@ -1,19 +1,24 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "./Admin.css";
 import { ContainerCard, Users } from "../../components/index";
+import { useNavigate } from "react-router-dom";
 
 const Admin = () => {
-  const [pageNo, setPageNo] = useState(1);
+  const navigate = useNavigate();
 
-  useEffect(() => {}, []);
+  const logoutHandler = () => {
+    localStorage.removeItem("authToken");
+    localStorage.removeItem("accountType");
+    navigate("/");
+  };
 
   return (
     <>
       <div className="admin-page-angry-grid">
         <div id="admin-page-item-0">
-          <div>
-            <div>ADMIN VIEW</div>
-            <div>LOG OUT</div>
+          <div className="admin-page-header">ADMIN VIEW</div>
+          <div className="admin-page-header-options" onClick={logoutHandler}>
+            LOG OUT
           </div>
         </div>
         <div id="admin-page-item-1">

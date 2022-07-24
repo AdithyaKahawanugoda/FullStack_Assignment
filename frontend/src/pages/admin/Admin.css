@@ -14,6 +14,17 @@
 
   grid-row-end: 2;
   grid-column-end: 6;
+
+  display: flex;
+  justify-content: space-between;
+  padding-left: 5vw;
+  padding-right: 5vw;
+  padding-top: 5vh;
+
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 2em;
+  color: white;
 }
 #admin-page-item-1 {
   grid-row-start: 2;
@@ -44,4 +55,8 @@
 
   grid-row-end: 4;
   grid-column-end: 2;
+}
+
+.admin-page-header-options:hover {
+  color: teal;
 }
