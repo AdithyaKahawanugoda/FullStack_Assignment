@@ -1,5 +1,6 @@
 const UserModel = require("../models/user-model");
 const bcrypt = require("bcryptjs");
+const validator = require("validator");
 
 // user profile update
 exports.updateProfile = async (req, res) => {
@@ -98,6 +99,7 @@ exports.getUserEmail = async (req, res) => {
   }
 };
 
+// update user role
 exports.updateUserAccountType = async (req, res) => {
   const { accountType } = req.body;
   const email = req.user.email;
@@ -123,6 +125,32 @@ exports.updateUserAccountType = async (req, res) => {
   } catch (error) {
     return res.status(500).json({
       msg: "Error in updateUserAccountType controller-" + error,
+    });
+  }
+};
+
+exports.getUserBySearchTerm = async (req, res) => {
+  const { term } = req.body;
+  let user;
+  let result;
+  try {
+    if (parseInt(term)) {
+      result = await UserModel.findOne({ id: term });
+      user = [result];
+    } else if (validator.isEmail(term)) {
+      result = await UserModel.findOne({ email: term });
+      user = [result];
+    } else {
+      user = await UserModel.aggregate([
+        { $match: { $or: [{ firstName: term }, { lastName: term }] } },
+      ]);
+    }
+    return res.status(200).json({
+      user,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      msg: "Error in getUserBySearchTerm controller-" + error,
     });
   }
 };
