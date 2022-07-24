@@ -130,7 +130,7 @@ exports.updateUserAccountType = async (req, res) => {
 };
 
 exports.getUserBySearchTerm = async (req, res) => {
-  const { term } = req.body;
+  const term = req.query.term;
   let user;
   let result;
   try {
