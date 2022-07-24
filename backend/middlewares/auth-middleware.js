@@ -8,7 +8,11 @@ exports.protectedUser = async (req, res, next) => {
       const user = await UserModel.findById(decoded.objId);
       if (!user) {
         noUserResponse(res);
-      } else if ((user.accountType !== "USER") | "ADMIN" | "STUDENT") {
+      } else if (
+        user.accountType !== "USER" &&
+        user.accountType !== "ADMIN" &&
+        user.accountType !== "STUDENT"
+      ) {
         accessDeniedResponse(res);
       } else {
         req.user = user;
