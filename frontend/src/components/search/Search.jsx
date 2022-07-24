@@ -24,7 +24,6 @@ const Search = () => {
     await axios
       .get(`http://localhost:5000/api/user/search?term=${search}`, config)
       .then((res) => {
-        console.log(res);
         setResults(res.data.user);
         setIsLoading(false);
       })

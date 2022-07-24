@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import "./AccountTypeSelection.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 const AccountTypeSelection = () => {
   const navigate = useNavigate();
+  const [errorText, setErrorText] = useState("");
 
   const navigationHandler = async (type) => {
     const config = {
@@ -29,7 +30,7 @@ const AccountTypeSelection = () => {
         }
       })
       .catch((err) => {
-        console.log(err);
+        setErrorText(err.response.data.msg);
       });
   };
 
@@ -61,7 +62,9 @@ const AccountTypeSelection = () => {
             Student
           </div>
         </div>
-        <div id="account-selection-container-item-3"></div>
+        <div id="account-selection-container-item-3">
+          {errorText && errorText}
+        </div>
       </div>
     </>
   );

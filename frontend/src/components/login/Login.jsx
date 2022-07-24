@@ -60,11 +60,9 @@ const Login = ({ sectionNavigator }) => {
       await axios
         .post("http://localhost:5000/api/auth/login", { email, password })
         .then((res) => {
-          console.log(res);
           setLoginData(res.data);
         })
         .catch((error) => {
-          console.log(error);
           setErrorText(error.response.data.msg);
           setEmail("");
           setPassword("");

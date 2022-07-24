@@ -32,7 +32,6 @@ const Notes = () => {
       await axios
         .get(`http://localhost:5000/api/note/getAll?page=${page}`, config)
         .then((res) => {
-          console.log(res);
           setPages(res.data.pages);
           setNotesList(res.data.notes);
           setIsLoading(false);
@@ -61,6 +60,7 @@ const Notes = () => {
         config
       )
       .then((res) => {
+        alert("Note Deleted!");
         console.log(res);
       })
       .catch((error) => {

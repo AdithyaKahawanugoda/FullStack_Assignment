@@ -109,7 +109,6 @@ const ProfileUpdate = ({ sectionNavigator }) => {
               config
             )
             .then((res) => {
-              console.log(res);
               setIsLoading(false);
               setNotification(res.data.msg);
               logoutHandler();

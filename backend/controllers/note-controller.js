@@ -61,8 +61,6 @@ exports.updateNoteById = async (req, res) => {
 // get all notes
 exports.getNotes = async (req, res) => {
   const student_id = req.user._id;
-  console.log(req.user.email);
-  console.log(student_id);
   try {
     let query = NoteModel.find({ student_id });
 

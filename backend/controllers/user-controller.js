@@ -160,7 +160,6 @@ const resetPassword = async (email, newPassword) => {
     // hash password before saving into db
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(newPassword, salt);
-    console.log({ newPassword: newPassword, hashedPassword: hashedPassword });
     const passwordUpdatedUser = await UserModel.findOneAndUpdate(
       { email },
       {
@@ -169,7 +168,6 @@ const resetPassword = async (email, newPassword) => {
         },
       }
     );
-    console.log({ passwordUpdatedUser: passwordUpdatedUser });
   } catch (error) {
     return res.status(500).json({
       msg: "Error in resetPassword controller-" + error,
@@ -187,7 +185,6 @@ const updateStatus = async (email, status) => {
         },
       }
     );
-    console.log({ statusUpdatedUser: statusUpdatedUser });
   } catch (error) {
     return res.status(500).json({
       msg: "Error in updateStatus controller-" + error,

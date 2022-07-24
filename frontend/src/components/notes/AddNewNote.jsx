@@ -35,7 +35,6 @@ const AddNewNote = ({ selectedNote }) => {
               },
             };
             if (selectedNote) {
-              console.log(selectedNote._id);
               await axios
                 .patch(
                   "http://localhost:5000/api/note/updateById",
@@ -47,7 +46,6 @@ const AddNewNote = ({ selectedNote }) => {
                   config
                 )
                 .then((res) => {
-                  console.log(res);
                   resetForm({
                     values: {
                       title: "",
@@ -64,7 +62,6 @@ const AddNewNote = ({ selectedNote }) => {
               await axios
                 .post("http://localhost:5000/api/note/add", values, config)
                 .then((res) => {
-                  console.log(res);
                   resetForm({
                     values: {
                       title: "",
