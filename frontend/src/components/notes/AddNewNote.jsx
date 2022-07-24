@@ -3,6 +3,7 @@ import "./AddNewNote.css";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import BarLoader from "react-spinners/BarLoader";
+import { teal } from "@mui/material/colors";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import AddTaskRoundedIcon from "@mui/icons-material/AddTaskRounded";
@@ -13,16 +14,18 @@ const validationSchema = Yup.object({
   description: Yup.string().trim().required("Description is required"),
 });
 
-const AddNewNote = () => {
+const AddNewNote = ({ selectedNote }) => {
   const [isLoading, setIsLoading] = useState(false);
   return (
     <div className="note-add-container">
-      <div className="note-add-container-heading">Add New Note..</div>
+      <div className="note-add-container-heading">
+        {selectedNote ? "" : "Add New Note.."}
+      </div>
       <div>
         <Formik
           initialValues={{
-            title: "",
-            description: "",
+            title: `${selectedNote ? selectedNote.title : ""}`,
+            description: `${selectedNote ? selectedNote.description : ""}`,
           }}
           validationSchema={validationSchema}
           onSubmit={async (values, { resetForm }) => {
@@ -31,22 +34,50 @@ const AddNewNote = () => {
                 Authorization: `Bearer ${localStorage.getItem("authToken")}`,
               },
             };
-            await axios
-              .post("http://localhost:5000/api/note/add", values, config)
-              .then((res) => {
-                console.log(res);
-                resetForm({
-                  values: {
-                    title: "",
-                    description: "",
+            if (selectedNote) {
+              console.log(selectedNote._id);
+              await axios
+                .patch(
+                  "http://localhost:5000/api/note/updateById",
+                  {
+                    title: values.title,
+                    description: values.description,
+                    _id: selectedNote._id,
                   },
+                  config
+                )
+                .then((res) => {
+                  console.log(res);
+                  resetForm({
+                    values: {
+                      title: "",
+                      description: "",
+                    },
+                  });
+                  setIsLoading(false);
+                })
+                .catch((err) => {
+                  console.log(err);
+                  setIsLoading(false);
                 });
-                setIsLoading(false);
-              })
-              .catch((err) => {
-                console.log(err);
-                setIsLoading(false);
-              });
+            } else {
+              await axios
+                .post("http://localhost:5000/api/note/add", values, config)
+                .then((res) => {
+                  console.log(res);
+                  resetForm({
+                    values: {
+                      title: "",
+                      description: "",
+                    },
+                  });
+                  setIsLoading(false);
+                })
+                .catch((err) => {
+                  console.log(err);
+                  setIsLoading(false);
+                });
+            }
           }}
         >
           {({
@@ -112,9 +143,13 @@ const AddNewNote = () => {
                   variant="contained"
                   size="medium"
                   type="submit"
+                  style={{ backgroundColor: teal[500] }}
                   endIcon={<AddTaskRoundedIcon />}
                 >
-                  <div className="note-add-container-submit-btn-text">Add</div>
+                  <div className="note-add-container-submit-btn-text">
+                    {" "}
+                    {selectedNote ? "Update" : "Add"}
+                  </div>
                 </Button>
                 {isLoading && <BarLoader width={"100%"} />}
               </div>
