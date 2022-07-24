@@ -60,3 +60,9 @@
 .note-list-pagination {
   margin-top: 50px;
 }
+
+.note-delete-confirmation-options {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
