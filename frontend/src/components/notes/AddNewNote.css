@@ -1,0 +1,13 @@
+.note-add-container {
+  padding: 10px;
+}
+.note-add-container-heading {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 1.3em;
+  color: teal;
+}
+
+.note-add-container-input-field {
+  margin-bottom: 10px;
+}
