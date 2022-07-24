@@ -1,0 +1,62 @@
+.note-list-container {
+  padding: 20px;
+}
+
+.note-list-container-heading {
+  color: teal;
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 2em;
+}
+
+.note-list-item-container {
+  padding-top: 10px;
+  padding-left: 10px;
+}
+
+.note-list-item-headings {
+  border-bottom: solid black;
+  padding-left: 10px;
+  padding-right: 10px;
+  display: flex;
+  justify-content: space-between;
+
+  margin-bottom: 20px;
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 1.3em;
+}
+.note-list-item-container-boundary {
+  height: 15vh;
+}
+.note-list-item-boundary {
+  border-bottom: solid rgba(0, 0, 0, 0.247);
+  padding-left: 15px;
+  padding-right: 15px;
+  display: flex;
+  justify-content: space-between;
+
+  margin-bottom: 10px;
+  font-family: var(--font-family);
+  font-weight: 300;
+  font-size: 1em;
+}
+
+.note-list-item-column1 {
+  width: 30%;
+}
+.note-list-item-column2 {
+  width: 50%;
+}
+.note-list-item-column3 {
+  width: 10%;
+  text-align: center;
+}
+.note-list-item-column4 {
+  width: 10%;
+  text-align: center;
+}
+
+.note-list-pagination {
+  margin-top: 50px;
+}
