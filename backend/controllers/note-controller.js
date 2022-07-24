@@ -40,6 +40,7 @@ exports.updateNoteById = async (req, res) => {
         msg: "Can not find the note id",
       });
     } else {
+      const _id = noteData._id;
       await NoteModel.findOneAndUpdate(
         { _id },
         {

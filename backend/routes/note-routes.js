@@ -5,7 +5,6 @@ const {
   addNote,
   updateNoteById,
   deleteNoteById,
-  getNotesByStudentId,
 } = require("../controllers/note-controller");
 
 const { protectedStudent } = require("../middlewares/auth-middleware");
