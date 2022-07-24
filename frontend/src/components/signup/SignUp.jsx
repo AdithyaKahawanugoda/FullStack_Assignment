@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./SignUp.css";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
+import { teal } from "@mui/material/colors";
 import ArrowForwardIosRoundedIcon from "@mui/icons-material/ArrowForwardIosRounded";
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
@@ -94,6 +95,7 @@ const SignUp = ({ tabNavigator }) => {
         <Button
           variant="contained"
           size="medium"
+          style={{ backgroundColor: teal[500] }}
           startIcon={<ArrowForwardIosRoundedIcon />}
           onClick={registrationHandler}
           disabled={isSubmit}

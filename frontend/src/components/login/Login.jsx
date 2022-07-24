@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./Login.css";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
+import { teal } from "@mui/material/colors";
 import ArrowForwardIosRoundedIcon from "@mui/icons-material/ArrowForwardIosRounded";
 import BarLoader from "react-spinners/BarLoader";
 import validator from "validator";
@@ -126,6 +127,7 @@ const Login = ({ sectionNavigator }) => {
         <Button
           variant="contained"
           size="medium"
+          style={{ backgroundColor: teal[500] }}
           startIcon={<ArrowForwardIosRoundedIcon />}
           onClick={loginHandler}
           disabled={isSubmit}

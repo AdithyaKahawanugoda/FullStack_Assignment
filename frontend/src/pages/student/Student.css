@@ -22,9 +22,8 @@
   grid-row-end: 5;
   grid-column-end: 5;
 
-  border: solid;
-  border-color: black;
   height: 40vh;
+  margin-top: 10px;
 }
 #student-page-item-2 {
   grid-row-start: 1;
@@ -32,6 +31,17 @@
 
   grid-row-end: 2;
   grid-column-end: 6;
+
+  display: flex;
+  justify-content: space-between;
+  padding-left: 5vw;
+  padding-right: 5vw;
+  padding-top: 5vh;
+
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 2em;
+  color: white;
 }
 #student-page-item-3 {
   grid-row-start: 5;
@@ -67,4 +77,8 @@
 
   grid-row-end: 3;
   grid-column-end: 5;
+}
+
+.student-page-header-options:hover {
+  color: teal;
 }

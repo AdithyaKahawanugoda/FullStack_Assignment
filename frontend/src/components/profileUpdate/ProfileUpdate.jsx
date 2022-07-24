@@ -5,6 +5,7 @@ import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import Button from "@mui/material/Button";
+import { teal } from "@mui/material/colors";
 import ArrowForwardIosRoundedIcon from "@mui/icons-material/ArrowForwardIosRounded";
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
@@ -302,6 +303,7 @@ const ProfileUpdate = ({ sectionNavigator }) => {
                 variant="contained"
                 size="medium"
                 type="submit"
+                style={{ backgroundColor: teal[500] }}
                 endIcon={<ArrowForwardIosRoundedIcon />}
               >
                 <div className="profile-update-container-submit-btn-text">

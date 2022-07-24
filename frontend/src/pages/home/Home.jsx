@@ -8,6 +8,7 @@ import {
 } from "../../components/index";
 import "./Home.css";
 import Button from "@mui/material/Button";
+import { teal } from "@mui/material/colors";
 import ArrowBackIosRoundedIcon from "@mui/icons-material/ArrowBackIosRounded";
 
 const Home = () => {
@@ -94,6 +95,7 @@ const Home = () => {
                 <Button
                   variant="contained"
                   size="medium"
+                  style={{ backgroundColor: teal[500] }}
                   endIcon={<ArrowBackIosRoundedIcon />}
                 >
                   <div className="home-container-back-btn-text">Back</div>

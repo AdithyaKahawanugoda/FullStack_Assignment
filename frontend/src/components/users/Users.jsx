@@ -4,7 +4,6 @@ import { Pagination } from "../index";
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import BarLoader from "react-spinners/BarLoader";
 import axios from "axios";
 
 const Users = () => {
