@@ -1,0 +1,11 @@
+{
+  "id": 0,
+  "email": "admin@gmail.com",
+  "password": "admin123",
+  "firstName": "ADMIN",
+  "lastName": "CONTROL",
+  "dateOfBirth": "2022-07-25",
+  "mobile": "0771234543",
+  "accountType": "ADMIN",
+  "status": true
+}
