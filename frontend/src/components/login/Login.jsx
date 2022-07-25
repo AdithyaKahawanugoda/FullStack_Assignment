@@ -6,9 +6,12 @@ import { teal } from "@mui/material/colors";
 import ArrowForwardIosRoundedIcon from "@mui/icons-material/ArrowForwardIosRounded";
 import BarLoader from "react-spinners/BarLoader";
 import validator from "validator";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const Login = ({ sectionNavigator }) => {
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorText, setErrorText] = useState("");
@@ -29,7 +32,13 @@ const Login = ({ sectionNavigator }) => {
       if (loginData?.userStatus === false) {
         sectionNavigator(2);
       } else if (loginData?.userStatus === true) {
-        sectionNavigator(3);
+        if (loginData.userAccountType === "ADMIN") {
+          navigate("/admin");
+        } else if (loginData.userAccountType === "STUDENT") {
+          navigate("/student");
+        } else {
+          navigate("/");
+        }
       }
 
       setIsLoading(false);
@@ -38,7 +47,7 @@ const Login = ({ sectionNavigator }) => {
     if (loginData) {
       loginSuccessHandler();
     }
-  }, [loginData, sectionNavigator]);
+  }, [loginData, navigate, sectionNavigator]);
 
   const emailInputHandler = (inputText) => {
     setIsValid(true);

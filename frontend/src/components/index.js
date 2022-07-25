@@ -1,4 +1,3 @@
-export { default as AccountTypeSelection } from "./accountTypeSelection/AccountTypeSelection";
 export { default as Login } from "./login/Login";
 export { default as Notes } from "./notes/Notes";
 export { default as AddNewNote } from "./notes/AddNewNote";

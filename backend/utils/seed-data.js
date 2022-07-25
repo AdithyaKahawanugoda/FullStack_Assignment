@@ -32,8 +32,7 @@ const addAdmin = async (data) => {
   }
 };
 
-// const URI = process.env.MONGO_URI;
-const URI = "mongodb://localhost:27017";
+const URI = process.env.MONGO_URI;
 
 // mongodb connection
 mongoose

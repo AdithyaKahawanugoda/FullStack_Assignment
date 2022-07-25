@@ -60,8 +60,7 @@ const Notes = () => {
         config
       )
       .then((res) => {
-        alert("Note Deleted!");
-        console.log(res);
+        window.location.reload();
       })
       .catch((error) => {
         console.log(error);
@@ -83,7 +82,7 @@ const Notes = () => {
 
   return (
     <div className="note-list-container">
-      <div className="note-list-container-heading">User list</div>
+      <div className="note-list-container-heading">User notes list</div>
       <div className="note-list-item-container">
         <div className="note-list-item-headings">
           <div className="note-list-item-column1">Title</div>

@@ -53,6 +53,7 @@ const AddNewNote = ({ selectedNote }) => {
                     },
                   });
                   setIsLoading(false);
+                  window.location.reload();
                 })
                 .catch((err) => {
                   console.log(err);
@@ -69,6 +70,7 @@ const AddNewNote = ({ selectedNote }) => {
                     },
                   });
                   setIsLoading(false);
+                  window.location.reload();
                 })
                 .catch((err) => {
                   console.log(err);

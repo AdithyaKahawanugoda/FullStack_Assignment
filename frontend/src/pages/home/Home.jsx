@@ -4,7 +4,6 @@ import {
   Login,
   SignUp,
   ProfileUpdate,
-  AccountTypeSelection,
 } from "../../components/index";
 import "./Home.css";
 import Button from "@mui/material/Button";
@@ -105,11 +104,6 @@ const Home = () => {
                 Please fill following fields to complete your registration
               </p>
               <ProfileUpdate sectionNavigator={currentSectionHandler} />
-            </ContainerCard>
-          )}
-          {currentSection === 3 && (
-            <ContainerCard>
-              <AccountTypeSelection />
             </ContainerCard>
           )}
         </div>

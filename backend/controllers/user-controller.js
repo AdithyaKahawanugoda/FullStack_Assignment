@@ -22,14 +22,15 @@ exports.updateProfile = async (req, res) => {
           }
         );
         await resetPassword(email, profileData.password);
+        await updateUserAccountType(email);
         await updateStatus(email, true);
-        return res.status(200).json({
+        res.status(200).json({
           msg: "Profile updated successfully",
         });
       }
     }
   } catch (error) {
-    return res.status(500).json({
+    res.status(500).json({
       msg: "Error in updateProfile controller-" + error,
     });
   }
@@ -99,36 +100,7 @@ exports.getUserEmail = async (req, res) => {
   }
 };
 
-// update user role
-exports.updateUserAccountType = async (req, res) => {
-  const { accountType } = req.body;
-  const email = req.user.email;
-
-  try {
-    if (accountType === "ADMIN" || accountType === "STUDENT") {
-      await UserModel.findOneAndUpdate(
-        { email },
-        {
-          $set: {
-            accountType: accountType,
-          },
-        }
-      );
-      return res.status(200).json({
-        msg: "Profile updated successfully",
-        accountType,
-      });
-    } else
-      return res.status(400).json({
-        msg: "Invalid account type ",
-      });
-  } catch (error) {
-    return res.status(500).json({
-      msg: "Error in updateUserAccountType controller-" + error,
-    });
-  }
-};
-
+// get results for user search
 exports.getUserBySearchTerm = async (req, res) => {
   const term = req.query.term;
   let user;
@@ -160,7 +132,7 @@ const resetPassword = async (email, newPassword) => {
     // hash password before saving into db
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(newPassword, salt);
-    const passwordUpdatedUser = await UserModel.findOneAndUpdate(
+    await UserModel.findOneAndUpdate(
       { email },
       {
         $set: {
@@ -177,7 +149,7 @@ const resetPassword = async (email, newPassword) => {
 
 const updateStatus = async (email, status) => {
   try {
-    const statusUpdatedUser = await UserModel.findOneAndUpdate(
+    await UserModel.findOneAndUpdate(
       { email },
       {
         $set: {
@@ -188,6 +160,23 @@ const updateStatus = async (email, status) => {
   } catch (error) {
     return res.status(500).json({
       msg: "Error in updateStatus controller-" + error,
+    });
+  }
+};
+
+const updateUserAccountType = async (email) => {
+  try {
+    await UserModel.findOneAndUpdate(
+      { email },
+      {
+        $set: {
+          accountType: "STUDENT",
+        },
+      }
+    );
+  } catch (error) {
+    return res.status(500).json({
+      msg: "Error in updateUserAccountType function-" + error,
     });
   }
 };

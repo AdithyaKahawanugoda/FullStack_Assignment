@@ -5,7 +5,6 @@ const {
   getUsers,
   getUserById,
   getUserEmail,
-  updateUserAccountType,
   getUserBySearchTerm,
 } = require("../controllers/user-controller");
 
@@ -18,7 +17,6 @@ router.route("/updateProfile").patch(protectedUser, updateProfile);
 router.route("/getAll").get(protectedAdmin, getUsers);
 router.route("/getById/:id").get(protectedAdmin, getUserById);
 router.route("/getUserEmail").get(protectedUser, getUserEmail);
-router.route("/userAccountType").patch(protectedUser, updateUserAccountType);
 router.route("/search").get(protectedAdmin, getUserBySearchTerm);
 
 module.exports = router;
