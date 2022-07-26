@@ -21,6 +21,8 @@
 
    Step 3 - Then execute "npm run seed" command to populate local mongodb with an Admin user (email: admin@gmail.com, password: admin123)
 
+   \*_Please do not paste email address into input fields, write them by your own. (Otherwise validation will return false)_
+
    Step 4 - Execute "npm start" command to launch backend server
 
    Step 5 - Navigate to frontend directory and execute "npm install" command to install required npm packages
@@ -36,5 +38,7 @@
    Step 3 - Tempory login credentials will get deliver into your Ethereal account, (if not refresh mail-box)
 
    Step 4 - Use same email and provided temporary password on Login screen to access for the first time
+
+   \*_Please do not paste email address into input fields, write them by your own. (Otherwise validation will return false)_
 
    Step 5 - Provide additional details on Profile Update window to proceed, and login again with new password you provided on that screen.
