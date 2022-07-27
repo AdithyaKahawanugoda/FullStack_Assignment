@@ -113,8 +113,16 @@ exports.getUserBySearchTerm = async (req, res) => {
       result = await UserModel.findOne({ email: term });
       user = [result];
     } else {
+      let capitalizedTerm = term.toUpperCase();
       user = await UserModel.aggregate([
-        { $match: { $or: [{ firstName: term }, { lastName: term }] } },
+        {
+          $match: {
+            $or: [
+              { firstName: capitalizedTerm },
+              { lastName: capitalizedTerm },
+            ],
+          },
+        },
       ]);
     }
     return res.status(200).json({
