@@ -1,0 +1,33 @@
+version: "3.9"
+
+services:
+  mongo_db:
+    container_name: db_container
+    image: mongo:latest
+    restart: always
+    volumes:
+      - mongo_db:/data/db
+
+  api:
+    build: ./backend
+    ports:
+      - "5000:5000"
+    environment:
+      PORT: 5000
+      MONGO_URI: mongodb://mongo_db:27017
+      JWT_EXPIRE: 45min
+      JWT_SECRET: surgeinternshipinterviewcodingassessment
+    depends_on:
+      - mongo_db
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:3000"
+    stdin_open: true
+    tty: true
+    depends_on:
+      - api
+
+volumes:
+  mongo_db: {}
