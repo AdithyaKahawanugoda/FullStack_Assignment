@@ -3,7 +3,7 @@
 1. Application Description:
 
    This is a MERN application containing CRUD operations handling with 2 different user types (ADMIN & STUDENT).
-   ADMIN view contains comprehensive view on all users registred on the system, including user search functionality to find user by ID, first name, last name, full name or using their email address.
+   ADMIN view contains comprehensive view on all users registred on the system, including user search functionality to find user by ID, first name, last name or using their email address.
    STUDENT view contains note management functionalities (CRUD) along with backend pagination integrated.
    New user registration flow includes fake SMTP service that deliver e,mail containing temporary user login credentials along with an URL.
    Further this application contains JWT for authentication, protected routes, proper form validations and error handling on both frontend and backend.
@@ -42,3 +42,5 @@
    \*_Please do not paste email address into input fields, write them by your own. (Otherwise validation will return false)_
 
    Step 5 - Provide additional details on Profile Update window to proceed, and login again with new password you provided on that screen.
+
+\*_To view pagination component, please create at least 6 items (Notes/Users)_
